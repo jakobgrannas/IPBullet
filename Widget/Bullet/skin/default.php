@@ -6,12 +6,12 @@
  */
 ?>
 
-<div class="bullet">
+<div class="bullet <?php echo !empty($cssClasses) ? $cssClasses : ''; ?>">
 	<div class="bullet__image">
 		<span class="bullet__icon fa <?php echo !empty($icon) ? $icon : ''; ?>"></span>
 	</div>
 	<div class="bullet__content">
-		<p class="bullet__text--primary"><?php echo !empty($textPrimary) ? $textPrimary : ''; ?></p>
-		<p class="bullet__text--secondary"><?php echo !empty($textSecondary) ? $textSecondary : ''; ?></p>
+		<p class="bullet__text--primary"><?php echo !empty($textPrimary) ? $textPrimary : __('Edit me!', 'Ip-admin'); ?></p>
+		<p class="bullet__text--secondary"><?php echo !empty($textSecondary) ? $textSecondary : __('Edit me as well!', 'Ip-admin'); ?></p>
 	</div>
 </div>

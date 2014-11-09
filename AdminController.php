@@ -122,6 +122,14 @@ class AdminController
 			));
 		$form->addfield($field);
 
+		$field = new \Ip\Form\Field\Text(
+			array(
+				'name' => 'cssClasses',
+				'label' => __('CSS classes (optional)', 'Ip-admin', false),
+				'value' => empty($widgetData['cssClasses']) ? null : $widgetData['cssClasses']
+			));
+		$form->addField($field);
+
         return $form;
     }
 
