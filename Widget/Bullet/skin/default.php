@@ -11,7 +11,7 @@
 		<span class="bullet__icon fa <?php echo !empty($icon) ? $icon : ''; ?>"></span>
 	</div>
 	<div class="bullet__content">
-		<p class="bullet__text--primary"><?php echo !empty($textPrimary) ? $textPrimary : __('Edit me!', 'Ip-admin'); ?></p>
-		<p class="bullet__text--secondary"><?php echo !empty($textSecondary) ? $textSecondary : __('Edit me as well!', 'Ip-admin'); ?></p>
+		<p class="bullet__text--primary"><?php echo !empty($textPrimary) ? $textPrimary : __('Edit me!', 'Bullet'); ?></p>
+		<p class="bullet__text--secondary"><?php echo !empty($textSecondary) ? $textSecondary : __('Edit me as well!', 'Bullet'); ?></p>
 	</div>
 </div>

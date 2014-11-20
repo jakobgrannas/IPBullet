@@ -91,7 +91,7 @@ class AdminController
 		$field = new \Ip\Form\Field\TextArea(
 			array(
 				'name' => 'textPrimary',
-				'label' => __('First text field', 'Ip-admin', false),
+				'label' => __('First text field', 'Bullet', false),
 				'value' => empty($widgetData['textPrimary']) ? null : $widgetData['textPrimary']
 			));
 		$form->addField($field);
@@ -99,24 +99,24 @@ class AdminController
 		$field = new \Ip\Form\Field\TextArea(
 			array(
 				'name' => 'textSecondary',
-				'label' => __('Second text field', 'Ip-admin', false),
+				'label' => __('Second text field', 'Bullet', false),
 				'value' => empty($widgetData['textSecondary']) ? null : $widgetData['textSecondary']
 			));
 		$field->addValidator('Required');
 		$form->addfield($field);
 
 		$values = array(
-			array('heart', __('Heart', 'Ip-admin', false)),
-			array('thumbsup', __('Thumbs up', 'Ip-admin', false)),
-			array('star', __('Star', 'Ip-admin', false)),
-			array('phone', __('Telephone', 'Ip-admin', false)),
-			array('envelope', __('Envelope', 'Ip-admin', false)),
+			array('heart', __('Heart', 'Bullet', false)),
+			array('thumbsup', __('Thumbs up', 'Bullet', false)),
+			array('star', __('Star', 'Bullet', false)),
+			array('phone', __('Telephone', 'Bullet', false)),
+			array('envelope', __('Envelope', 'Bullet', false)),
 		);
 
 		$field = new \Ip\Form\Field\Select(
 			array(
 				'name' => 'icon',
-				'label' => __('Icon', 'Ip-admin', false),
+				'label' => __('Icon', 'Bullet', false),
 				'values' => $values,
 				'value' => empty($widgetData['icon']) ? null : $widgetData['icon']
 			));
@@ -125,7 +125,7 @@ class AdminController
 		$field = new \Ip\Form\Field\Text(
 			array(
 				'name' => 'cssClasses',
-				'label' => __('CSS classes (optional)', 'Ip-admin', false),
+				'label' => __('CSS classes (optional)', 'Bullet', false),
 				'value' => empty($widgetData['cssClasses']) ? null : $widgetData['cssClasses']
 			));
 		$form->addField($field);
