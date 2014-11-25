@@ -29,12 +29,13 @@ class AdminController
         $widgetData = $widgetRecord['data'];
 
         //create form prepopulated with current widget data
-        $form = $this->managementForm($widgetData);
+        //$form = $this->managementForm($widgetData);
 
         //Render form and popup HTML
         $viewData = array(
-            'form' => $form
+            'form' => $this->managementForm($widgetData)
         );
+
         $popupHtml = ipView('view/editPopup.php', $viewData)->render();
         $data = array(
             'popup' => $popupHtml
@@ -42,7 +43,6 @@ class AdminController
         //Return rendered widget management popup HTML in JSON format
         return new \Ip\Response\Json($data);
     }
-
 
     /**
      * Check widget's posted data and return data to be stored or errors to be displayed
@@ -88,6 +88,18 @@ class AdminController
         );
         $form->addField($field);
 
+		//$values = array();
+		$field = new \Ip\Form\Field\RepositoryFile(
+			array(
+				'name' => 'image',
+				'label' => __('Image', 'Bullet', false),
+				'preview' => 'thumbnails',
+				'value' => empty($widgetData['image']) ? array() : $widgetData['image'],
+				'secure' => false
+			)
+		);
+		$form->addField($field);
+
 		$field = new \Ip\Form\Field\TextArea(
 			array(
 				'name' => 'textPrimary',
@@ -106,6 +118,7 @@ class AdminController
 		$form->addfield($field);
 
 		$values = array(
+			array('none', __('None (use image)', 'Bullet', false)),
 			array('heart', __('Heart', 'Bullet', false)),
 			array('thumbsup', __('Thumbs up', 'Bullet', false)),
 			array('star', __('Star', 'Bullet', false)),

@@ -35,6 +35,12 @@ var IpWidget_Bullet = function () {
             $.proxy(fixOverlay, context)();
         });
 
+		$(document).on('bulletDataInitialized', context.updateThumbnails);
+
+		$(document).on('click', '.ipsFile .ipsRemove', context.updateThumbnails);
+
+		$(document).on('ipRepository.filesSelected',  '.ipsModuleRepositoryPopup', context.updateThumbnails);
+
     };
 
     /**
@@ -46,8 +52,34 @@ var IpWidget_Bullet = function () {
             .css('z-index', 1000) // should be higher enough but lower than widget controls
             .width(this.widgetObject.width())
             .height(this.widgetObject.height());
-    }
+    };
 
+	/**
+	 * Updates list of image thumbnails
+	 * @param e Event object
+	 */
+	this.updateThumbnails = function (e) {
+		var $repoFileContainer = $('#ipWidgetBulletPopup .type-repositoryFile'),
+			$thumbnails = $('.js-bullet-thumbnail'),
+			images = [],
+			$container = $('<div class="uploaded-images"></div>'),
+			$image,
+			image = '<img src="" class="uploaded-image js-bullet-thumbnail" />',
+			$fileLinks = $('.ipsFiles .ipsFileName');
+
+		if($thumbnails && $thumbnails.length) {
+			$thumbnails.remove();
+		}
+
+		$fileLinks.each(function (idx, $el) {
+			$image = $(image);
+			$image.attr('src', $el.href);
+			images.push($image);
+		});
+
+		$container.prepend(images);
+		$repoFileContainer.prepend($container);
+	};
 
     /**
      * Automatically open settings popup when new widget added
@@ -84,7 +116,8 @@ var IpWidget_Bullet = function () {
                 ipInitForms(); //This is standard ImpressPages function to initialize JS specific form fields
                 $popup.find('.ipsConfirm').on('click', function(e){e.preventDefault(); $popup.find('form').submit();}); //submit form on "Confirm" button click
                 $popup.find('form').on('ipSubmitResponse', $.proxy(save, context)); //save form data if form has been successfully validated by PHP (AdminController.php -> checkForm)
-            },
+				$popup.trigger('bulletDataInitialized')
+			},
             error: function (response) {
                 alert('Error: ' + response.responseText);
             }

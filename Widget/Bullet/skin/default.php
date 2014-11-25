@@ -8,7 +8,12 @@
 
 <div class="bullet <?php echo !empty($cssClasses) ? $cssClasses : ''; ?>">
 	<div class="bullet__image">
-		<span class="bullet__icon fa <?php echo !empty($icon) ? $icon : ''; ?>"></span>
+		<?php if (isset($icon) && $icon == 'none' && isset($image) && count($image) > 0): ?>
+			<?php $lastImage = count($image) - 1; ?>
+			<img src="<?php echo ipFileUrl('file/repository/' . $image[$lastImage]); ?>" />
+		<?php else: ?>
+			<span class="bullet__icon fa <?php echo !empty($icon) ? $icon : ''; ?>"></span>
+		<?php endif; ?>
 	</div>
 	<div class="bullet__content">
 		<p class="bullet__text--primary"><?php echo !empty($textPrimary) ? $textPrimary : __('Edit me!', 'Bullet'); ?></p>

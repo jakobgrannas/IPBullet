@@ -1,0 +1,15 @@
+.uploaded-images {
+	position: absolute;
+	right: 0;
+}
+
+.uploaded-image {
+	display: inline-block;
+	width: 50px;
+	margin-right: 0.4em;
+	border-radius: 100%;
+}
+
+.uploaded-image:last-child {
+	margin-right: 0;
+}
