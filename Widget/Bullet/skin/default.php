@@ -10,9 +10,9 @@
 	<div class="bullet__image">
 		<?php if (isset($icon) && $icon == 'none' && isset($image) && count($image) > 0): ?>
 			<?php $lastImage = count($image) - 1; ?>
-			<img src="<?php echo ipFileUrl('file/repository/' . $image[$lastImage]); ?>" />
+			<img src="<?php echo ipFileUrl('file/repository/' . $image[$lastImage]); ?>" class="bullet__point--image" />
 		<?php else: ?>
-			<span class="bullet__icon fa <?php echo !empty($icon) ? $icon : ''; ?>"></span>
+			<span class="bullet__point--icon fa <?php echo !empty($icon) ? $icon : ''; ?>"></span>
 		<?php endif; ?>
 	</div>
 	<div class="bullet__content">
