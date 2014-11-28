@@ -100,7 +100,7 @@ class AdminController
 		);
 		$form->addField($field);
 
-		$field = new \Ip\Form\Field\TextArea(
+		$field = new \Ip\Form\Field\RichText(
 			array(
 				'name' => 'textPrimary',
 				'label' => __('First text field', 'Bullet', false),
@@ -108,13 +108,12 @@ class AdminController
 			));
 		$form->addField($field);
 
-		$field = new \Ip\Form\Field\TextArea(
+		$field = new \Ip\Form\Field\RichText(
 			array(
 				'name' => 'textSecondary',
 				'label' => __('Second text field', 'Bullet', false),
 				'value' => empty($widgetData['textSecondary']) ? null : $widgetData['textSecondary']
 			));
-		$field->addValidator('Required');
 		$form->addfield($field);
 
 		$values = array(

@@ -16,7 +16,11 @@
 		<?php endif; ?>
 	</div>
 	<div class="bullet__content">
-		<p class="bullet__text--primary"><?php echo !empty($textPrimary) ? $textPrimary : __('Edit me!', 'Bullet'); ?></p>
-		<p class="bullet__text--secondary"><?php echo !empty($textSecondary) ? $textSecondary : __('Edit me as well!', 'Bullet'); ?></p>
+		<?php if (!empty($textPrimary)) : ?>
+			<div class="bullet__text--primary"><?php echo $textPrimary; ?></div>
+		<?php endif; ?>
+		<?php if (!empty($textSecondary)) : ?>
+			<div class="bullet__text--secondary"><?php echo $textSecondary; ?></div>
+		<?php endif; ?>
 	</div>
 </div>
